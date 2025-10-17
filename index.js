@@ -16,7 +16,11 @@ const app = express();
 // ✅ Security & Middleware
 app.use(express.json());
 app.use(helmet());
-app.use(cors({ origin: "http://localhost:3000", credentials: true }));
+app.use(cors({
+  origin: ["http://localhost:3000", "https://task-app-frontend-five.vercel.app"],
+  credentials: true
+}));
+
 
 
 // ✅ Routes
@@ -29,6 +33,7 @@ app.use("/api/users", userRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
+
 
 
 
